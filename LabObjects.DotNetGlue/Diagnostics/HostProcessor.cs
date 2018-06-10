@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Timers;
 using LabObjects.DotNetGlue.SharedKernel;
 
 namespace LabObjects.DotNetGlue.Diagnostics
