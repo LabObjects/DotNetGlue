@@ -46,9 +46,8 @@
     <Compile Include="Diagnostics\ProcessorBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedKernel\DotNetGlueBase.cs" />
+    <Compile Include="Xml\XmlDoc.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Xml\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,4 +10,4 @@ This library wraps .NET classes that are hard to use in scripting languages that
 1. System.Diagnostics.Process class terminates prematurley when directy accessed in scripted context.
 2. Simplify use of XmlDoc and related classes.
 
-Additional information can be found at [dotnetglue.org](http://dotnetglue.org)
+Additional information can be found at [dotnetglue.org](http://dotnetglue.org).

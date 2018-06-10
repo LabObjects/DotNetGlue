@@ -5,6 +5,7 @@ using LabObjects.DotNetGlue.Diagnostics;
 
 namespace LabObjects.DotNetGlue.Tests
 {
+
     [TestClass]
     public class Processor_RunHiddenTests
     {

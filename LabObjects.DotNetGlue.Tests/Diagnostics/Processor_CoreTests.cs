@@ -7,6 +7,7 @@ namespace LabObjects.DotNetGlue.Tests
     [TestClass]
     public class Processor_CoreTests
     {
+
         [TestMethod]
         public void TestMethod1()
         {

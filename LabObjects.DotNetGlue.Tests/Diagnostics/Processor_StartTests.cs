@@ -8,6 +8,7 @@ namespace LabObjects.DotNetGlue.Tests
     [TestClass]
     public class ProcessorStartTests
     {
+
         [TestMethod]
         public void Test_CMDWindow()
         {

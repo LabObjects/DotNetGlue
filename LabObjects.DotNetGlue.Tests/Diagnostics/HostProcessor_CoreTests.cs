@@ -7,6 +7,7 @@ namespace LabObjects.DotNetGlue.Tests
     [TestClass]
     public class HostProcessor_CoreTests
     {
+
         [TestMethod]
         public void HostProcessor_GetHost()
         {

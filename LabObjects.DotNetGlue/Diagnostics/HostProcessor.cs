@@ -10,7 +10,6 @@ using LabObjects.DotNetGlue.SharedKernel;
 
 namespace LabObjects.DotNetGlue.Diagnostics
 {
-    //TODO Static Classes can;t derive from classes. Should make static methods and data (i.e., processorDictionary
     /// <summary>
     /// HostProcessor Class - a class that wraps the Processor Host Process 
     /// and serves as a Processor Factory and Dictionary.

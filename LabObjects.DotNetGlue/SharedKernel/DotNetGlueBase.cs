@@ -12,6 +12,7 @@ namespace LabObjects.DotNetGlue.SharedKernel
     /// </summary>
     public class DotNetGlueBase
     {
+
         #region Private fields
         private StringBuilder _lastError = new StringBuilder("N");
         private StringBuilder _lastErrorDetail = new StringBuilder("");

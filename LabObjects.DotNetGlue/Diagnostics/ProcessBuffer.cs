@@ -7,6 +7,7 @@ using LabObjects.DotNetGlue.SharedKernel;
 
 namespace LabObjects.DotNetGlue.Diagnostics
 { 
+
     /// <summary>
     /// Internal class that provides a first-in, first-out queue and "all data" property to support buffering Process I/O.
     /// </summary>

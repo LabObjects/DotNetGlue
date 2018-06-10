@@ -14,6 +14,7 @@ using LabObjects.DotNetGlue.SharedKernel;
 
 namespace LabObjects.DotNetGlue.Diagnostics
 {
+
     /// <summary>
     /// ProcessorBase
     /// <para>Base class for Processor based classes.</para>

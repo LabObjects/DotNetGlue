@@ -14,6 +14,7 @@ namespace LabObjects.DotNetGlue.Diagnostics
     /// </summary>
     public class Processor : ProcessorBase
     {
+
         #region Constructors
         /// <summary>
         /// Processor Constructor
