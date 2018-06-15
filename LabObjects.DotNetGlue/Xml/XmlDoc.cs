@@ -106,6 +106,7 @@ namespace LabObjects.DotNetGlue.Xml
             bool status = false;
             try
             {
+                // TODO replace with dotnetglue exception
                 if (_xml.Schemas.Count == 0)
                     throw new Exception("No Schemas Defined");
 

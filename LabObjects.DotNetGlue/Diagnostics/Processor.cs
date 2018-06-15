@@ -12,7 +12,7 @@ namespace LabObjects.DotNetGlue.Diagnostics
     /// <summary>
     /// Processor Class
     /// </summary>
-    public class Processor : ProcessorBase
+    public class Processor : ProcessorBase, IProcessor
     {
 
         #region Constructors
@@ -288,14 +288,14 @@ namespace LabObjects.DotNetGlue.Diagnostics
         /// DynamicTimeout - when TRUE allows Process timeout determinations to be made on based on last Output or Input Activity
         /// otherwise process timeout is based on when the process is started. Must be set before the process starts.
         /// </summary>
-        public bool DynamicTimeout
+        public Boolean DynamicTimeout
         {
             get { return _isDynamicTimeout; }
             set
             {
                 if (IsRunning)
                 {
-                    throw new Exception("Process.DynamicTimeout: Can't set property when Process is running");
+                    throw new ProcessorRunningException(this);
                 }
                 else
                     _isDynamicTimeout = value;
@@ -913,28 +913,6 @@ namespace LabObjects.DotNetGlue.Diagnostics
             return timeout;
         }
         #endregion
-
-        private bool ProcessCloseMainWindow()
-        {
-            bool status = false;
-            const string errMsg = "Unable to CloseMainWindow";
-            if (IsRunning && (Process != null) && !Process.HasExited)
-            {
-                try
-                {
-                    status = Process.CloseMainWindow();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(string.Format("{0}: {1}", errMsg, ex.Message), ex);
-                }
-            }
-            else
-            {
-                throw new Exception(string.Format("{0}: {1}", errMsg, "Process Not Running"));
-            }
-            return status;
-        }
   
         /// <summary>
         /// Private helper function to reset the metric counters for a process. 

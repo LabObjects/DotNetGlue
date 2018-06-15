@@ -25,7 +25,8 @@ namespace LabObjects.DotNetGlue.Diagnostics
     /// </remarks>
     /// <seealso cref="LabObjects.DotNetGlue.Diagnostics.HostProcessor"/>
     /// <seealso cref="LabObjects.DotNetGlue.Diagnostics.Processor"/>
-    public class ProcessorBase : DotNetGlueBase, IDisposable //, IProcessor
+    public class ProcessorBase : DotNetGlueBase, IDisposable
+, IProcessorBase
     {
         #region Constructors
         /// <summary>
@@ -73,7 +74,8 @@ namespace LabObjects.DotNetGlue.Diagnostics
                     break;
                 default:
                     enc = null;
-                    throw new Exception(string.Format("SetErrorOutputEncoding: Encoding not supported: {0}", encodingName));
+                    throw new InvalidEnumArgumentException($"SetErrorOutputEncoding: Encoding not supported: {encodingName}");
+
             }
             return enc;
         }
@@ -204,26 +206,23 @@ namespace LabObjects.DotNetGlue.Diagnostics
             Encoding enc = null;
             if (!IsRunning)
             {
-                enc = GetEncodingFromName(encodingName);
-                if (enc != null)
+                try
                 {
-                    try
-                    {
-                        StandardErrorEncoding = enc;
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        SetLastError($"SetErrorOutputEncoding: {ex.Message}", ex.InnerException);
-                    }
+                    enc = GetEncodingFromName(encodingName);
+                    StandardErrorEncoding = enc;
+                    return true;
                 }
-                else
-                    SetLastError($"SetErrorOutputEncoding:{this.LastError}");
+                catch (InvalidEnumArgumentException ex)
+                {
+                    SetLastError($"Set Error Output Encoding Failed: {ex.Message}");
+                    return false;
+                }
             }
             else
-                SetLastError("SetErrorOutputEncoding: Process is Running");
-
-            return false;
+            {
+                SetLastError($"Set Error Output Encoding Failed: Processor is Running");
+                return false;
+            }
         }
 
         /// <summary>SetOutputEncoding
@@ -238,26 +237,23 @@ namespace LabObjects.DotNetGlue.Diagnostics
             Encoding enc = null;
             if (!IsRunning)
             {
-                enc = GetEncodingFromName(encodingName);
-                if (enc != null)
+                try
                 {
-                    try
-                    {
-                        StandardOutputEncoding = enc;
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        SetLastError($"SetOutputEncoding: {ex.Message}", ex.InnerException);
-                    }
+                    enc = GetEncodingFromName(encodingName);
+                    StandardErrorEncoding = enc;
+                    return true;
                 }
-                else
-                    SetLastError($"SetOutputEncoding:{LastError}");
+                catch (InvalidEnumArgumentException ex)
+                {
+                    SetLastError($"Set Output Encoding Failed: {ex.Message}");
+                    return false;
+                }
             }
             else
-                SetLastError("SetOutputEncoding: Process is not Running");
-
-            return false;
+            {
+                SetLastError($"Set Output Encoding Failed: Processor is Running");
+                return false;
+            }
         }
 
         /// <summary>
@@ -550,7 +546,7 @@ namespace LabObjects.DotNetGlue.Diagnostics
             try
             {
                 if (IsRunning)
-                    throw new InvalidOperationException($"Processor is running.");
+                    throw new ProcessorRunningException();
                 switch (windowStyleString.ToLower())
                 {
                     case "normal":

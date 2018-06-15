@@ -64,10 +64,12 @@ namespace LabObjects.DotNetGlue.SharedKernel
                 _lastErrorDetail.AppendFormat($"{errDetails}");
         }
         /// <summary>
+        /// 
         /// Protected ovoverloaderride method to set the LastError and LastErrorDetail property.
         /// </summary>
         /// <param name="errMsg">The message to set as the LastError property.</param>
         /// <param name="innerException">The exception that will be use to set the LastErrorDetail property.</param>
+        /// TODO IException?
         protected void SetLastError(string errMsg, Exception innerException)
         {
 
