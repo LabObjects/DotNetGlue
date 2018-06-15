@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Diagnostics\HostProcessor.cs" />
     <Compile Include="Diagnostics\IProcessor.cs" />
-    <Compile Include="Diagnostics\IProcessorBase.cs" />
     <Compile Include="Diagnostics\ProcessBuffer.cs" />
     <Compile Include="Diagnostics\Processor.cs" />
     <Compile Include="Diagnostics\ProcessorBase.cs" />
